@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications — QuantNeuro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero {
+      min-height: 44vh;
+      background:
+        radial-gradient(ellipse 60% 55% at 30% 30%, rgba(26,46,90,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 45% at 70% 70%, rgba(13,27,62,0.06) 0%, transparent 52%),
+        linear-gradient(160deg, #faf4e8 0%, #f3ebda 55%, #f7eed9 100%);
+    }
+  </style>
+</head>
+<body>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="page-wrap">
+
+  <nav class="nav" role="navigation" aria-label="Main">
+    <a href="index.html" class="nav__logo">
+      <img src="images/design_assets/logo_QUANTNEURO.png" alt="QuantNeuro">
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html" class="active">Publications</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero__orb hero__orb--cyan"  aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--lilac" aria-hidden="true"></div>
+    <div class="hero__badge"><span class="dot"></span>Our Work</div>
+    <h1><span class="gradient-text">Publications</span></h1>
+    <p class="hero__sub">Featured research from the Quantum Neurobiology Lab — peer-reviewed papers, conference proceedings, and preprints.</p>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="section__label reveal">Featured Research</div>
+    <h2 class="section__title reveal">Recent Publications</h2>
+    <p class="section__desc reveal">A selection of our lab's published work. For the complete list, please see Dr. Craddock's Google Scholar profile.</p>
+
+    <div class="pub-list">
+      <div class="glass-card pub-item reveal">
+        <span class="pub-item__tag pub-item__tag--journal">Journal Article</span>
+        <h3>Quantum Effects in Microtubule Aromatic Amino Acid Energy Transfer</h3>
+        <p class="pub-item__meta">Craddock, T.J.A. et al. — <em>Biosystems</em>, 2025</p>
+      </div>
+
+      <div class="glass-card pub-item reveal">
+        <span class="pub-item__tag pub-item__tag--journal">Journal Article</span>
+        <h3>Magnetic Isotope Effects on Radical Pair Recombination in Neuronal Microtubules</h3>
+        <p class="pub-item__meta">Craddock, T.J.A., Gassab, L. et al. — <em>Physical Review E</em>, 2025</p>
+      </div>
+
+      <div class="glass-card pub-item reveal">
+        <span class="pub-item__tag pub-item__tag--conference">Conference</span>
+        <h3>Magnetic Effects in Quantum Neurobiology — Science of Consciousness 2025</h3>
+        <p class="pub-item__meta">Craddock, T.J.A. — Barcelona, Spain, July 2025</p>
+      </div>
+
+      <div class="glass-card pub-item reveal">
+        <span class="pub-item__tag pub-item__tag--journal">Journal Article</span>
+        <h3>Computational Modeling of Anesthetic Binding to Tubulin Proteins</h3>
+        <p class="pub-item__meta">Craddock, T.J.A. et al. — <em>Journal of Chemical Information and Modeling</em></p>
+      </div>
+
+      <div class="glass-card pub-item reveal">
+        <span class="pub-item__tag pub-item__tag--journal">Journal Article</span>
+        <h3>Ultraweak Photon Emission and Oxidative Stress in Neuronal Systems</h3>
+        <p class="pub-item__meta">Craddock, T.J.A. et al. — <em>Bioelectromagnetics</em></p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:52px;" class="reveal">
+      <a href="https://scholar.google.com/" class="btn btn--glass" target="_blank" rel="noopener">
+        View Full Publication List
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__brand">Quantum Neurobiology Lab</p>
+      <p>University of Waterloo · Waterloo, ON, Canada</p>
+    </div>
+  </footer>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

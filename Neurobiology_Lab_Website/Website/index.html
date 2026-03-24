@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuantNeuro — Quantum Neurobiology Lab</title>
+  <meta name="description" content="The Quantum Neurobiology Lab at the University of Waterloo — Using Quantum Biology to improve Health for Neuro Inflammatory Illnesses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ── Hero: soft gradient on light cream ── */
+    .hero {
+      background:
+        radial-gradient(ellipse 70% 55% at 18% 35%, rgba(26,46,90,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 50% at 82% 65%, rgba(13,27,62,0.07) 0%, transparent 52%),
+        radial-gradient(ellipse 40% 40% at 55% 5%,  rgba(26,46,90,0.04) 0%, transparent 45%),
+        radial-gradient(ellipse 80% 40% at 50% 100%,rgba(26,46,90,0.05)  0%, transparent 60%),
+        linear-gradient(175deg, #faf4e8 0%, #f3ebda 50%, #f7eed9 100%);
+    }
+
+    .section--pillars  { position: relative; }
+    .section--pillars::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: -1;
+      background:
+        radial-gradient(ellipse 60% 50% at 90% 30%, rgba(13,27,62,0.04) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 10% 70%, rgba(26,46,90,0.03)  0%, transparent 55%);
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<div class="page-wrap">
+
+  <!-- ═══════ NAV ═══════ -->
+  <nav class="nav" role="navigation" aria-label="Main">
+    <a href="index.html" class="nav__logo">
+      <img src="images/design_assets/logo_QUANTNEURO.png" alt="QuantNeuro">
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero__orb hero__orb--cyan"  aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--lilac" aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--warm"  aria-hidden="true"></div>
+
+    <div class="hero__badge">
+      <span class="dot"></span>
+      University of Waterloo · Canada Research Chair
+    </div>
+
+    <h1>The <span class="gradient-text">Quantum Neurobiology</span> Lab</h1>
+
+    <p class="hero__sub">
+      Using Quantum Biology to improve health for neuroinflammatory illnesses, 
+      bridging quantum physics, molecular biology, and neuroscience.
+    </p>
+
+    <div class="hero__cta">
+      <a href="research.html" class="btn btn--primary">
+        Explore Research
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h12M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="team.html"     class="btn btn--glass">Meet the Team</a>
+    </div>
+  </section>
+
+  <!-- ═══════ RESEARCH PILLARS ═══════ -->
+  <section class="section section--pillars">
+    <div class="section__label reveal">What We Do</div>
+    <h2 class="section__title reveal">Research at the Quantum–Biology Interface</h2>
+    <p class="section__desc reveal">
+      Our interdisciplinary lab investigates how quantum phenomena shape neuronal function —
+      and how those insights can lead to new diagnostics and therapies for neuroinflammatory illness.
+    </p>
+
+    <div class="card-grid">
+      <!-- Light -->
+      <div class="glass-card reveal">
+        <svg class="glass-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="8"/>
+          <line x1="24" y1="4"  x2="24" y2="10"/> <line x1="24" y1="38" x2="24" y2="44"/>
+          <line x1="4"  y1="24" x2="10" y2="24"/> <line x1="38" y1="24" x2="44" y2="24"/>
+          <line x1="9.9"  y1="9.9"  x2="14.1" y2="14.1"/> <line x1="33.9" y1="33.9" x2="38.1" y2="38.1"/>
+          <line x1="9.9"  y1="38.1" x2="14.1" y2="33.9"/> <line x1="33.9" y1="14.1" x2="38.1" y2="9.9"/>
+        </svg>
+        <h3>Light in Quantum Neurobiology</h3>
+        <p>Investigating how light interacts with neuronal structures — studying optical properties of key proteins to reveal quantum mechanisms underlying brain function.</p>
+        <a href="research.html" class="card-link">Learn more →</a>
+      </div>
+
+      <!-- Magnetics -->
+      <div class="glass-card reveal">
+        <svg class="glass-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 8v16a12 12 0 0024 0V8"/>
+          <line x1="8"  y1="8" x2="16" y2="8"/>
+          <line x1="32" y1="8" x2="40" y2="8"/>
+          <circle cx="24" cy="28" r="3" fill="currentColor" opacity="0.35"/>
+        </svg>
+        <h3>Magnetics in Quantum Neurobiology</h3>
+        <p>Studying radical pair spin dynamics and how magnetic fields and isotope effects influence cognitive processes and neuronal activity at the quantum level.</p>
+        <a href="research.html" class="card-link">Learn more →</a>
+      </div>
+
+      <!-- Chemicals -->
+      <div class="glass-card reveal">
+        <svg class="glass-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6v14l-8 16a4 4 0 003.5 6h21a4 4 0 003.5-6L30 20V6"/>
+          <line x1="14" y1="6" x2="34" y2="6"/>
+          <circle cx="22" cy="32" r="2"   fill="currentColor" opacity="0.45"/>
+          <circle cx="28" cy="28" r="1.5" fill="currentColor" opacity="0.3"/>
+          <circle cx="25" cy="36" r="1"   fill="currentColor" opacity="0.4"/>
+        </svg>
+        <h3>Chemicals in Quantum Neurobiology</h3>
+        <p>Exploring how anesthetics, psychedelics, and nerve agents relate to neuroinflammation and neurodegeneration at the quantum molecular level.</p>
+        <a href="research.html" class="card-link">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="dna-divider" aria-hidden="true">
+    <svg viewBox="0 0 600 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Strand 1: phase 0 -->
+      <path class="strand-1" d="M0,30.0 C25,9.1 50,9.1 75,30.0 C100,50.9 125,50.9 150,30.0 C175,9.1 200,9.1 225,30.0 C250,50.9 275,50.9 300,30.0 C325,9.1 350,9.1 375,30.0 C400,50.9 425,50.9 450,30.0 C475,9.1 500,9.1 525,30.0 C550,50.9 575,50.9 600,30.0"/>
+      <!-- Strand 2: phase 2pi/3 (1/3 period offset — minor/major groove geometry) -->
+      <path class="strand-2" d="M0,12.7 C25,23.2 50,57.8 75,47.3 C100,36.8 125,2.2 150,12.7 C175,23.2 200,57.8 225,47.3 C250,36.8 275,2.2 300,12.7 C325,23.2 350,57.8 375,47.3 C400,36.8 425,2.2 450,12.7 C475,23.2 500,57.8 525,47.3 C550,36.8 575,2.2 600,12.7"/>
+      <!-- 10 rungs per helical period (every 15 px) -->
+      <line class="rung" x1="0" y1="30.0" x2="0" y2="12.7"/>
+      <line class="rung" x1="15" y1="18.2" x2="15" y2="21.9"/>
+      <line class="rung" x1="30" y1="11.0" x2="30" y2="34.2"/>
+      <line class="rung" x1="45" y1="11.0" x2="45" y2="44.9"/>
+      <line class="rung" x1="60" y1="18.2" x2="60" y2="49.9"/>
+      <line class="rung" x1="75" y1="30.0" x2="75" y2="47.3"/>
+      <line class="rung" x1="90" y1="41.8" x2="90" y2="38.1"/>
+      <line class="rung" x1="105" y1="49.0" x2="105" y2="25.8"/>
+      <line class="rung" x1="120" y1="49.0" x2="120" y2="15.1"/>
+      <line class="rung" x1="135" y1="41.8" x2="135" y2="10.1"/>
+      <line class="rung" x1="150" y1="30.0" x2="150" y2="12.7"/>
+      <line class="rung" x1="165" y1="18.2" x2="165" y2="21.9"/>
+      <line class="rung" x1="180" y1="11.0" x2="180" y2="34.2"/>
+      <line class="rung" x1="195" y1="11.0" x2="195" y2="44.9"/>
+      <line class="rung" x1="210" y1="18.2" x2="210" y2="49.9"/>
+      <line class="rung" x1="225" y1="30.0" x2="225" y2="47.3"/>
+      <line class="rung" x1="240" y1="41.8" x2="240" y2="38.1"/>
+      <line class="rung" x1="255" y1="49.0" x2="255" y2="25.8"/>
+      <line class="rung" x1="270" y1="49.0" x2="270" y2="15.1"/>
+      <line class="rung" x1="285" y1="41.8" x2="285" y2="10.1"/>
+      <line class="rung" x1="300" y1="30.0" x2="300" y2="12.7"/>
+      <line class="rung" x1="315" y1="18.2" x2="315" y2="21.9"/>
+      <line class="rung" x1="330" y1="11.0" x2="330" y2="34.2"/>
+      <line class="rung" x1="345" y1="11.0" x2="345" y2="44.9"/>
+      <line class="rung" x1="360" y1="18.2" x2="360" y2="49.9"/>
+      <line class="rung" x1="375" y1="30.0" x2="375" y2="47.3"/>
+      <line class="rung" x1="390" y1="41.8" x2="390" y2="38.1"/>
+      <line class="rung" x1="405" y1="49.0" x2="405" y2="25.8"/>
+      <line class="rung" x1="420" y1="49.0" x2="420" y2="15.1"/>
+      <line class="rung" x1="435" y1="41.8" x2="435" y2="10.1"/>
+      <line class="rung" x1="450" y1="30.0" x2="450" y2="12.7"/>
+      <line class="rung" x1="465" y1="18.2" x2="465" y2="21.9"/>
+      <line class="rung" x1="480" y1="11.0" x2="480" y2="34.2"/>
+      <line class="rung" x1="495" y1="11.0" x2="495" y2="44.9"/>
+      <line class="rung" x1="510" y1="18.2" x2="510" y2="49.9"/>
+      <line class="rung" x1="525" y1="30.0" x2="525" y2="47.3"/>
+      <line class="rung" x1="540" y1="41.8" x2="540" y2="38.1"/>
+      <line class="rung" x1="555" y1="49.0" x2="555" y2="25.8"/>
+      <line class="rung" x1="570" y1="49.0" x2="570" y2="15.1"/>
+      <line class="rung" x1="585" y1="41.8" x2="585" y2="10.1"/>
+      <line class="rung" x1="600" y1="30.0" x2="600" y2="12.7"/>
+      <!-- Base-pair dots -->
+      <circle class="basepair" cx="0" cy="21.4" r="1.5"/>
+      <circle class="basepair" cx="15" cy="20.0" r="1.5"/>
+      <circle class="basepair" cx="30" cy="22.6" r="1.5"/>
+      <circle class="basepair" cx="45" cy="27.9" r="1.5"/>
+      <circle class="basepair" cx="60" cy="34.0" r="1.5"/>
+      <circle class="basepair" cx="75" cy="38.6" r="1.5"/>
+      <circle class="basepair" cx="90" cy="40.0" r="1.5"/>
+      <circle class="basepair" cx="105" cy="37.4" r="1.5"/>
+      <circle class="basepair" cx="120" cy="32.0" r="1.5"/>
+      <circle class="basepair" cx="135" cy="25.9" r="1.5"/>
+      <circle class="basepair" cx="150" cy="21.4" r="1.5"/>
+      <circle class="basepair" cx="165" cy="20.0" r="1.5"/>
+      <circle class="basepair" cx="180" cy="22.6" r="1.5"/>
+      <circle class="basepair" cx="195" cy="27.9" r="1.5"/>
+      <circle class="basepair" cx="210" cy="34.0" r="1.5"/>
+      <circle class="basepair" cx="225" cy="38.6" r="1.5"/>
+      <circle class="basepair" cx="240" cy="40.0" r="1.5"/>
+      <circle class="basepair" cx="255" cy="37.4" r="1.5"/>
+      <circle class="basepair" cx="270" cy="32.0" r="1.5"/>
+      <circle class="basepair" cx="285" cy="25.9" r="1.5"/>
+      <circle class="basepair" cx="300" cy="21.4" r="1.5"/>
+      <circle class="basepair" cx="315" cy="20.0" r="1.5"/>
+      <circle class="basepair" cx="330" cy="22.6" r="1.5"/>
+      <circle class="basepair" cx="345" cy="27.9" r="1.5"/>
+      <circle class="basepair" cx="360" cy="34.0" r="1.5"/>
+      <circle class="basepair" cx="375" cy="38.6" r="1.5"/>
+      <circle class="basepair" cx="390" cy="40.0" r="1.5"/>
+      <circle class="basepair" cx="405" cy="37.4" r="1.5"/>
+      <circle class="basepair" cx="420" cy="32.0" r="1.5"/>
+      <circle class="basepair" cx="435" cy="25.9" r="1.5"/>
+      <circle class="basepair" cx="450" cy="21.4" r="1.5"/>
+      <circle class="basepair" cx="465" cy="20.0" r="1.5"/>
+      <circle class="basepair" cx="480" cy="22.6" r="1.5"/>
+      <circle class="basepair" cx="495" cy="27.9" r="1.5"/>
+      <circle class="basepair" cx="510" cy="34.0" r="1.5"/>
+      <circle class="basepair" cx="525" cy="38.6" r="1.5"/>
+      <circle class="basepair" cx="540" cy="40.0" r="1.5"/>
+      <circle class="basepair" cx="555" cy="37.4" r="1.5"/>
+      <circle class="basepair" cx="570" cy="32.0" r="1.5"/>
+      <circle class="basepair" cx="585" cy="25.9" r="1.5"/>
+      <circle class="basepair" cx="600" cy="21.4" r="1.5"/>
+    </svg>
+  </div>
+
+  <!-- ═══════ GET INVOLVED ═══════ -->
+  <section class="section">
+    <div class="section__label reveal">Get Involved</div>
+    <h2 class="section__title reveal">Work With Us</h2>
+    <p class="section__desc reveal">
+      Whether you are a trainee, funder, or collaborator — we welcome your interest in quantum neurobiology.
+    </p>
+
+    <div class="card-grid">
+      <div class="glass-card reveal">
+        <svg class="glass-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="6" width="36" height="28" rx="3"/>
+          <line x1="14" y1="40" x2="34" y2="40"/>
+          <line x1="24" y1="34" x2="24" y2="40"/>
+        </svg>
+        <h3>For Trainees</h3>
+        <p>Educating the next generation. If you are interested in learning more about quantum neurobiology, we welcome your curiosity and drive.</p>
+        <a href="contact.html" class="card-link">Get in touch →</a>
+      </div>
+
+      <div class="glass-card reveal">
+        <svg class="glass-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 4l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/>
+        </svg>
+        <h3>For Funders</h3>
+        <p>If you would like to support quantum neurobiology research in neuroinflammatory illness, your contribution makes a meaningful impact.</p>
+        <a href="contact.html" class="card-link">Get in touch →</a>
+      </div>
+
+      <div class="glass-card reveal">
+        <svg class="glass-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="16" cy="20" r="7"/>
+          <circle cx="32" cy="20" r="7"/>
+          <path d="M4 40c0-6 5-10 12-10"/>
+          <path d="M32 30c7 0 12 4 12 10"/>
+          <path d="M20 30c3 1.5 5 4 5 10"/>
+        </svg>
+        <h3>For Collaborators</h3>
+        <p>We collaborate! If you would like to work together on a common research interest in quantum biology or neuroscience, let us connect.</p>
+        <a href="contact.html" class="card-link">Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__brand">Quantum Neurobiology Lab</p>
+      <p>University of Waterloo · Waterloo, ON, Canada</p>
+    </div>
+  </footer>
+
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

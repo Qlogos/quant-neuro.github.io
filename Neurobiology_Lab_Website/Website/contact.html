@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — QuantNeuro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero {
+      min-height: 40vh;
+      background:
+        radial-gradient(ellipse 60% 55% at 65% 35%, rgba(26,46,90,0.07) 0%, transparent 52%),
+        radial-gradient(ellipse 50% 45% at 20% 65%, rgba(13,27,62,0.06) 0%, transparent 50%),
+        linear-gradient(162deg, #faf4e8 0%, #f3ebda 55%, #f7eed9 100%);
+    }
+  </style>
+</head>
+<body>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="page-wrap">
+
+  <nav class="nav" role="navigation" aria-label="Main">
+    <a href="index.html" class="nav__logo">
+      <img src="images/design_assets/logo_QUANTNEURO.png" alt="QuantNeuro">
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero__orb hero__orb--cyan"  aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--lilac" aria-hidden="true"></div>
+    <div class="hero__badge"><span class="dot"></span>Reach Out</div>
+    <h1><span class="gradient-text">Contact</span> Us</h1>
+    <p class="hero__sub">Thanks for reaching out — we are interested in hearing from trainees, funders, and collaborators alike.</p>
+  </section>
+
+  <section class="section" style="padding: 30px 0;">
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div class="contact-info reveal">
+        <div class="contact-info__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <div>
+            <h4>Location</h4>
+            <p>University of Waterloo<br>Waterloo, ON, Canada</p>
+          </div>
+        </div>
+
+        <div class="contact-info__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="22,4 12,13 2,4"/>
+          </svg>
+          <div>
+            <h4>Email</h4>
+            <p>quantneuro@uwaterloo.ca</p>
+          </div>
+        </div>
+
+        <div class="contact-info__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+          <div>
+            <h4>Lab Hours</h4>
+            <p>Monday – Friday, 9 AM – 5 PM EST</p>
+          </div>
+        </div>
+
+        <!-- Decorative molecule -->
+        <svg viewBox="0 0 220 100" fill="none" style="margin-top:36px;opacity:0.18;">
+          <circle cx="40"  cy="50" r="8"  stroke="rgba(26,46,90,0.55)"   fill="none"/>
+          <circle cx="110" cy="28" r="6"  stroke="rgba(13,27,62,0.55)" fill="none"/>
+          <circle cx="180" cy="50" r="8"  stroke="rgba(26,46,90,0.55)"   fill="none"/>
+          <circle cx="110" cy="72" r="6"  stroke="rgba(13,27,62,0.55)" fill="none"/>
+          <line x1="48"  y1="46" x2="104" y2="31" stroke="rgba(26,46,90,0.18)"/>
+          <line x1="116" y1="31" x2="172" y2="46" stroke="rgba(26,46,90,0.18)"/>
+          <line x1="48"  y1="54" x2="104" y2="69" stroke="rgba(26,46,90,0.18)"/>
+          <line x1="116" y1="69" x2="172" y2="54" stroke="rgba(26,46,90,0.18)"/>
+          <circle cx="40"  cy="50" r="3" fill="rgba(26,46,90,0.45)"/>
+          <circle cx="180" cy="50" r="3" fill="rgba(26,46,90,0.45)"/>
+          <circle cx="110" cy="28" r="2.5" fill="rgba(13,27,62,0.40)"/>
+          <circle cx="110" cy="72" r="2.5" fill="rgba(13,27,62,0.40)"/>
+        </svg>
+      </div>
+
+      <!-- Right: form -->
+      <form class="contact-form glass-card reveal" id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name <span style="color:var(--accent)">*</span></label>
+            <input type="text" id="fname" name="fname" placeholder="Jane" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name <span style="color:var(--accent)">*</span></label>
+            <input type="text" id="lname" name="lname" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email <span style="color:var(--accent)">*</span></label>
+          <input type="email" id="email" name="email" placeholder="jane@university.edu" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message <span style="color:var(--accent)">*</span></label>
+          <textarea id="message" name="message" placeholder="Tell us about your interest in quantum neurobiology..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--submit">
+          Send Message
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__brand">Quantum Neurobiology Lab</p>
+      <p>University of Waterloo · Waterloo, ON, Canada</p>
+    </div>
+  </footer>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+Sub header: Aisha Aamir, Undergraduate Research Volunteer, she/her
+Biography: Aisha is pursuing a Bachelor of Science in Honours Science at the University of Waterloo. She is an undergraduate volunteer learning to apply key concepts of quantum mechanics to biological processes. Currently, she's using molecular docking techniques to study actin and explore its interactions with various chemical molecules.
+
+Sub-Header: Material of Nanoscience Undergraduate Volunteer (male)
+
+Biography: Bingyang is completing a BSc in Nanomaterials Science at the University of Waterloo. Interested in quantum-informed strategies for targeted drug delivery. Since September 2025, he has started volunteering work, studying fundamentals of quantum neurobiology, and working on the Fano resonance project.
+
+Honours Biochemistry undergraduate student at the University of Waterloo, Dominic started volunteering in May 2025. Immersed in weekly meetings, he learned the fundamentals of Quantum Mechanics and Quantum Biology. Currently in his co-op term as a research assistant, he is investigating ultraweak photon emissions in Biochemical samples under oxidative stress.
+
+Sub-Header: Gaetan J. Delcroix, Neuroscience Ph.D. And Biology Engineer, Lab Manager (he/him)
+
+Bio: 
+20 years of experience in drug, medical device and biologics development (in vitro-vivo experiments, clinical trials).
+
+Experience setting up labs and supervising international teams of experimentalists in both academic and industry (GLP) lab settings.
+
+Current goal: to experimentally validate the new quantum biology hypotheses developed by Dr Craddock's team.
+
+Optional: Loves nature, cooking, DIY
+
+Dr Lea Gassab is a Provost’s Interdisciplinary Postdoctoral Scholar in the Craddock lab at the University of Waterloo. She holds a PhD in Quantum Information from Koç University and a Master’s from ENS de Lyon, and as part of her postdoc she is currently investigating quantum effects in the brain.
+
+DR. MADHU RAMESH, PH.D.
+
+Postdoctoral Researcher
+
+Dr. Madhu Ramesh completed his PhD in Chemical Biology at JNCASR, Bengaluru, India. Trained as a veterinarian with a master’s in Biochemistry, his research spans amyloid proteins, RNA biology, mitochondria, microglia, and neuroinflammation, focusing on Alzheimer’s disease. At the Craddock Lab, University of Waterloo, he explores quantum biology in Parkinson’s disease.
+
+Sub-header: Research Assistant (Co-op), he/him
+
+Biography: Matthew is completing his B.Sc. in Biochemistry at Waterloo. Currently, he's doing his second co-op work term with the Quantum Neurobiology Lab. His project uses computational molecular modeling to predict binding affinities of indoleamines to the protein tubulin. He's also applying this data to in-vitro work with microtubules.
+
+Mikhaël Zavala Thyer is a Computer Engineer that graduated from the Royal Military College of Canada and is also a Naval Warfare Officer within the Canadian Armed Forces. He is currently pursuing graduate studies within the department of Physics, interested in researching Reservoir Computing and its applications.
+
+Sub-header: Undergraduate Volunteer (she/her)
+
+Biography: Sarena is completing her BSc in Biomedical Sciences at the University of Waterloo. Her current research project explores the binding of indoleamines and phenethylamines to intermediate filaments. She began volunteering in September 2025 and has since been acquiring a strong understanding of quantum biology and molecular docking.
+
+Yashine holds a BSc (Hons) in Mathematics with Computer Science from Mauritius and an MSc in Physics from South Africa, and has taught quantitative subjects at university level. He is currently an MSc Biology student at the University of Waterloo, where he explores quantum-inspired graph models to study neuroimmune disease and brain systems.
+
+Bio:
+Yuki is completing her Bachelor of Science degree in Honours Science at the University of Waterloo. She is currently completing her BIOL 499 research project in the lab. Her project uses computational molecular modeling to investigate how reactive oxygen species interact with and destabilize the microtubule cytoskeleton in neurons.
+
+Zan is an undergraduate student specializing in nanoscience and currently volunteering in the lab. He has prior research experience in nanomaterials and interdisciplinary science, and his work has led to a published paper. He is excited to continue developing his skills and contributing to ongoing research projects.

@@ -1,0 +1,2 @@
+Bio:
+Yuki is completing her Bachelor of Science degree in Honours Science at the University of Waterloo. She is currently completing her BIOL 499 research project in the lab. Her project uses computational molecular modeling to investigate how reactive oxygen species interact with and destabilize the microtubule cytoskeleton in neurons.

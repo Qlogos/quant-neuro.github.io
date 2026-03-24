@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team — QuantNeuro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero {
+      min-height: 44vh;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 20%, rgba(26,46,90,0.07) 0%, transparent 52%),
+        radial-gradient(ellipse 55% 45% at 15% 80%, rgba(13,27,62,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 50% at 85% 70%, rgba(20,38,75,0.04) 0%, transparent 48%),
+        linear-gradient(162deg, #faf4e8 0%, #f3ebda 55%, #f7eed9 100%);
+    }
+    /* Initials placeholder */
+    .team-initials {
+      width: 108px; height: 108px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(26,46,90,0.10), rgba(13,27,62,0.10));
+      border: 1.5px solid rgba(26,46,90,0.18);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin: 0 auto 16px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: border-color 0.22s, box-shadow 0.22s, transform 0.22s;
+    }
+    .team-initials--lg {
+      width: 136px; height: 136px; font-size: 1.8rem; margin: 0;
+    }
+    .team-card:hover .team-initials {
+      border-color: var(--accent);
+      box-shadow: 0 0 22px var(--accent-glow), 0 8px 28px rgba(0,0,0,0.08);
+      transform: scale(1.03);
+    }
+    .team-card--pi:hover .team-initials--lg { transform: scale(1.03); }
+  </style>
+</head>
+<body>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="page-wrap">
+
+  <nav class="nav" role="navigation" aria-label="Main">
+    <a href="index.html" class="nav__logo">
+      <img src="images/design_assets/logo_QUANTNEURO.png" alt="QuantNeuro">
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero__orb hero__orb--cyan"  aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--lilac" aria-hidden="true"></div>
+    <div class="hero__badge"><span class="dot"></span>Our People</div>
+    <h1>The <span class="gradient-text">Team</span></h1>
+    <p class="hero__sub">A multidisciplinary group spanning quantum physics, neuroscience, biochemistry, and computational biology.</p>
+  </section>
+
+  <section class="section" style="padding-top:4vh">
+
+    <!-- ══ PI ══ -->
+    <h3 class="team-section-title reveal">Principal Investigator</h3>
+    <div class="team-grid team-grid--pi" style="margin-bottom:64px;">
+      <div class="glass-card team-card team-card--pi reveal">
+        <img class="team-card__photo team-card__photo--pi" src="images/people/PI_PHOTO.png" alt="Dr. Travis J.A. Craddock" loading="lazy">
+        <div>
+          <h3>Dr. Travis J.A. Craddock</h3>
+          <p class="team-card__role">Associate Professor of Biology · Tier I Canada Research Chair in Quantum Neurobiology</p>
+          <p>Trained in biophysics at the University of Alberta, Dr. Craddock applies computational biophysics and quantum biology to study neuroinflammation, cognition, and novel diagnostics and therapies development research at the University of Waterloo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Senior ══ -->
+    <h3 class="team-section-title reveal">Senior Research &amp; Leadership</h3>
+    <div class="team-grid" style="margin-bottom:64px;">
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/gaetan_delcroix.png" alt="Dr. Gaëtan J. Delcroix" loading="lazy">
+        <h3>Dr. Gaëtan J. Delcroix</h3>
+        <p class="team-card__role">Lab Manager</p>
+        <p>Over 20 years of experience in drug, medical device, and biologics development. Established laboratories and supervised international teams. Currently experimentally validating quantum biology hypotheses developed by Dr. Craddock's team.</p>
+      </div>
+    </div>
+
+    <!-- ══ Postdocs ══ -->
+    <h3 class="team-section-title reveal">Postdoctoral Researchers</h3>
+    <div class="team-grid" style="margin-bottom:64px;">
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/lea_gassab.jpg" alt="Dr. Lea Gassab" loading="lazy">
+        <h3>Dr. Lea Gassab</h3>
+        <p class="team-card__role">Provost's Interdisciplinary Postdoctoral Scholar</p>
+        <p>PhD in Quantum Information from Koç University; Master's from ENS de Lyon. Investigates quantum effects in the brain as part of her postdoctoral research at the Craddock Lab.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/madhu_ramesh.jpg" alt="Dr. Madhu Ramesh" loading="lazy">
+        <h3>Dr. Madhu Ramesh</h3>
+        <p class="team-card__role">Postdoctoral Researcher</p>
+        <p>PhD in Chemical Biology from JNCASR, Bengaluru. Training in veterinary science and biochemistry, with research spanning amyloid proteins, RNA biology, and neuroinflammation. Explores quantum biology in Parkinson's disease.</p>
+      </div>
+    </div>
+
+    <!-- ══ Grad ══ -->
+    <h3 class="team-section-title reveal">Graduate Researchers</h3>
+    <div class="team-grid" style="margin-bottom:64px;">
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/mikhael_thyer.jpg" alt="Mikhaël Zavala Thyer" loading="lazy">
+        <h3>Mikhaël Zavala Thyer</h3>
+        <p class="team-card__role">Graduate Researcher, Dept. of Physics</p>
+        <p>Computer engineer from the Royal Military College of Canada and Naval Warfare Officer in the Canadian Armed Forces. Researches reservoir computing and applications to complex physical systems.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/yashine_hossen.jpg" alt="Yashine Hazmatally Goolam Hossen" loading="lazy">
+        <h3>Yashine Hazmatally Goolam Hossen</h3>
+        <p class="team-card__role">MSc Student, Biology</p>
+        <p>BSc (Hons) in Mathematics with Computer Science from Mauritius; MSc in Physics from South Africa. Has taught quantitative subjects at university level. Explores quantum-inspired graph models to study neuroimmune disease and brain systems.</p>
+      </div>
+    </div>
+
+    <!-- ══ Research Assistants ══ -->
+    <h3 class="team-section-title reveal">Research Assistants</h3>
+    <div class="team-grid" style="margin-bottom:64px;">
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/dominic_deroche.jpg" alt="Dominic Mitchell De Roche" loading="lazy">
+        <h3>Dominic Mitchell De Roche</h3>
+        <p class="team-card__role">Research Assistant (Co-op)</p>
+        <p>Honours Biochemistry undergraduate. After beginning as a research volunteer in May 2025, now completing a co-op term investigating ultraweak photon emissions in biochemical samples under oxidative stress.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/matthew_colbourne.webp" alt="Matthew Colbourne" loading="lazy">
+        <h3>Matthew Colbourne</h3>
+        <p class="team-card__role">Research Assistant (Co-op)</p>
+        <p>BSc in Biochemistry at Waterloo. In his second co-op term — uses computational molecular modeling to predict indoleamine-tubulin binding affinities and applies results to in vitro microtubule studies.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/yuki_chen.jpg" alt="Yuki Chen" loading="lazy">
+        <h3>Yuki Chen</h3>
+        <p class="team-card__role">BIOL 499 Research Student</p>
+        <p>BSc in Honours Science at Waterloo. Using computational molecular modeling to investigate how reactive oxygen species interact with and destabilize the neuronal microtubule cytoskeleton.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/iren_karapetyan.jpg" alt="Iren Karapetyan" loading="lazy">
+        <h3>Iren Karapetyan</h3>
+        <p class="team-card__role">Research Assistant (Work Term)</p>
+        <p>BSc in Psychology at Waterloo. Examines effects of phenethylamine and indoleamine compounds on cytoskeletal and neuronal morphology.</p>
+      </div>
+    </div>
+
+    <!-- ══ Undergrad Volunteers ══ -->
+    <h3 class="team-section-title reveal">Undergraduate Volunteers</h3>
+    <div class="team-grid" style="margin-bottom:64px;">
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/aisha_aamir.jpg" alt="Aisha Aamir" loading="lazy">
+        <h3>Aisha Aamir</h3>
+        <p class="team-card__role">Undergraduate Volunteer · she/her</p>
+        <p>BSc in Honours Science. Applies principles of quantum mechanics to biological systems using computational molecular docking to study actin and its interactions with diverse chemical molecules.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/bingyang_lyu.jpg" alt="Bingyang Lyu" loading="lazy">
+        <h3>Bingyang Lyu</h3>
+        <p class="team-card__role">Undergraduate Volunteer</p>
+        <p>BSc in Nanomaterials Science. Interested in quantum-informed strategies for targeted drug delivery. Contributing to the Fano resonance project since September 2025.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/ron_kazachkov.jpg" alt="Ron Kazachkov" loading="lazy">
+        <h3>Ron Kazachkov</h3>
+        <p class="team-card__role">Undergraduate Volunteer</p>
+        <p>Computational biophysics, working under Dr. Lea Gassab. Examines dipole-dipole coupling approximations of aromatic amino acids in protein environments. Also contributes to lab infrastructure, website development, and scientific communication.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/sarena_luk.jpg" alt="Sarena Luk" loading="lazy">
+        <h3>Sarena Luk</h3>
+        <p class="team-card__role">Undergraduate Volunteer · she/her</p>
+        <p>BSc in Biomedical Sciences. Explores the binding of indoleamines and phenethylamines to intermediate filaments. Developing a strong foundation in quantum biology and molecular docking since September 2025.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/zan_gao.jpg" alt="Zan Gao" loading="lazy">
+        <h3>Zan Gao</h3>
+        <p class="team-card__role">Undergraduate Volunteer</p>
+        <p>Nanoscience at Waterloo. Prior research in nanomaterials and interdisciplinary science, including authorship on a published paper. Contributing to ongoing research projects in the lab.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/mercury_ming.webp" alt="Mercury Ming" loading="lazy">
+        <h3>Mercury Ming</h3>
+        <p class="team-card__role">Undergraduate Volunteer · they/them</p>
+        <p>BSc in Psychology. Has developed a foundation in quantum physics and quantum biology since April 2025. Currently investigating changes in neuronal RNA sequences under exposure to magnetic fields.</p>
+      </div>
+      <div class="glass-card team-card reveal">
+        <img class="team-card__photo" src="images/people/aswein_senthilkumaran.jpg" alt="Aswein Senthilkumaran" loading="lazy">
+        <h3>Aswein Senthilkumaran</h3>
+        <p class="team-card__role">Undergraduate Volunteer</p>
+        <p>Bachelor of Biochemistry with the option of microbiology. Has developed a foundation in quantum physics and quantum biology since joining the lab in April 2025.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__brand">Quantum Neurobiology Lab</p>
+      <p>University of Waterloo · Waterloo, ON, Canada</p>
+    </div>
+  </footer>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

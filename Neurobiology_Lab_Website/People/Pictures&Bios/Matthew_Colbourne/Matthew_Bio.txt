@@ -1,0 +1,3 @@
+Sub-header: Research Assistant (Co-op), he/him
+
+Biography: Matthew is completing his B.Sc. in Biochemistry at Waterloo. Currently, he's doing his second co-op work term with the Quantum Neurobiology Lab. His project uses computational molecular modeling to predict binding affinities of indoleamines to the protein tubulin. He's also applying this data to in-vitro work with microtubules.

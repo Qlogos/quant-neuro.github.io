@@ -1,0 +1,3 @@
+Sub header: Aisha Aamir, Undergraduate Research Volunteer, she/her
+Biography: Aisha is pursuing a Bachelor of Science in Honours Science at the University of Waterloo. She is an undergraduate volunteer learning to apply key concepts of quantum mechanics to biological processes. Currently, she's using molecular docking techniques to study actin and explore its interactions with various chemical molecules.
+
