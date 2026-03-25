@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Password</title>
+</head>
+<body style="text-align:center; margin-top:100px; font-family:sans-serif;">
+
+    <h2>Enter Access Code</h2>
+
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="checkPass()">Enter</button>
+
+    <p id="error" style="color:red;"></p>
+
+    <script>
+        function checkPass() {
+            var input = document.getElementById("pass").value;
+
+            if (input === "quant123") {  // <-- your password
+                window.location.href = "home.html";
+            } else {
+                document.getElementById("error").innerText = "Wrong password";
+            }
+        }
+    </script>
+
+</body>
+</html>
