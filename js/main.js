@@ -67,7 +67,7 @@
       wx: (Math.random() - 0.5) * WORLD_HALF * 2,
       wy: (Math.random() - 0.5) * WORLD_HALF * 2,
       wz: (Math.random() - 0.5) * WORLD_HALF * 2,
-      baseR:  Math.random() * 4 + 3,
+      baseR:  Math.random() * 10 + 14,
       phase:  Math.random() * Math.PI * 2,
       freq:   Math.random() * 0.0004 + 0.0002,
       hue:    Math.random() < 0.55 ? 0 : 1,
@@ -345,24 +345,41 @@
      DNA STRANDS  (helper accepts position / speed params)
   ══════════════════════════════════════════════════════════ */
   function drawDNA(cx, amp, freq, spd, a1, a2, sp) {
+    /* 2π/3 offset — same minor/major groove geometry as the separator divider */
+    const PH2 = Math.PI * 2 / 3;
+
+    /* Draw each strand segment-by-segment so opacity tracks depth in the helix.
+       z = cos(helix angle): +1 = front (full opacity), -1 = back (faint).       */
     for (let strand = 0; strand < 2; strand++) {
-      const ph = strand * Math.PI;
-      ctx.beginPath();
-      ctx.strokeStyle = strand === 0 ? `rgba(26,46,90,${a1})` : `rgba(13,27,62,${a2})`;
-      ctx.lineWidth = 1;
-      for (let y = -20; y < H + 20; y += 4) {
-        const x = cx + Math.sin(y * freq + spd + ph) * amp;
-        y === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      const ph      = strand * PH2;
+      const baseCol = strand === 0 ? '26,46,90' : '13,27,62';
+      const baseA   = strand === 0 ? a1 : a2;
+
+      let prevX = cx + Math.sin((-20) * freq + spd + ph) * amp;
+      for (let y = -20 + 4; y < H + 20; y += 4) {
+        const x     = cx + Math.sin(y * freq + spd + ph) * amp;
+        const z     = Math.cos(y * freq + spd + ph);          // helix depth
+        const alpha = baseA * (0.22 + 0.78 * (z * 0.5 + 0.5)); // 0.22→1.0× baseA
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(${baseCol},${alpha})`;
+        ctx.lineWidth   = 1;
+        ctx.moveTo(prevX, y - 4);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        prevX = x;
       }
-      ctx.stroke();
     }
+
+    /* Rungs: depth-modulated so they brighten when the helix faces the viewer */
     for (let y = sp; y < H; y += sp * 2) {
       const x1 = cx + Math.sin(y * freq + spd) * amp;
-      const x2 = cx + Math.sin(y * freq + spd + Math.PI) * amp;
-      const p  = a1 * 0.8 + a1 * 0.6 * Math.sin(y * 0.03 + time * 0.002);
-      ctx.beginPath(); ctx.strokeStyle = `rgba(26,46,90,${p})`; ctx.lineWidth = 0.6;
+      const x2 = cx + Math.sin(y * freq + spd + PH2) * amp;
+      const z1 = Math.cos(y * freq + spd);
+      const z2 = Math.cos(y * freq + spd + PH2);
+      const rA = a1 * 0.55 * (0.30 + 0.70 * ((z1 + z2) * 0.5 * 0.5 + 0.5));
+      ctx.beginPath(); ctx.strokeStyle = `rgba(26,46,90,${rA})`; ctx.lineWidth = 0.6;
       ctx.moveTo(x1, y); ctx.lineTo(x2, y); ctx.stroke();
-      ctx.beginPath(); ctx.fillStyle = `rgba(13,27,62,${p * 1.3})`;
+      ctx.beginPath(); ctx.fillStyle = `rgba(13,27,62,${rA * 1.3})`;
       ctx.arc((x1 + x2) / 2, y, 0.9, 0, Math.PI * 2); ctx.fill();
     }
   }
@@ -543,8 +560,8 @@
     drawDepthOrbs();
     drawGrid();
     drawLattice();
-    drawDNA(W * 0.88, 40, 0.013, time * 0.0005,  0.060, 0.050, 14);
-    drawDNA(W * 0.10, 30, 0.011, time * 0.00035, 0.035, 0.028, 17);
+    drawDNA(W * 0.88, 40, 0.013, -time * 0.0005,  0.200, 0.050, 14);
+    drawDNA(W * 0.10, 30, 0.011, -time * 0.00035, 0.200, 0.028, 17);
     drawNeurons3D();
     drawQuantumParticles();
     drawEnergyBursts();
