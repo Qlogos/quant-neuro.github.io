@@ -1,0 +1,26 @@
+/* ============================================================
+   network-bg.css — drop-in animated network background
+   Usage:  add class "network-bg" to any container element.
+   ============================================================ */
+
+.network-bg {
+  position: relative;
+  overflow: hidden;
+  background: #fff6df;
+}
+
+.network-bg > canvas.network-bg__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;   /* lets clicks pass through to content */
+  z-index: 0;
+}
+
+/* Anything you place inside the container sits above the canvas */
+.network-bg > *:not(canvas.network-bg__canvas) {
+  position: relative;
+  z-index: 1;
+}

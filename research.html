@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/network-bg.css">
   <style>
     .hero {
       min-height: 52vh;
@@ -29,7 +30,7 @@
   </style>
 </head>
 <body>
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="network-bg-root" class="network-bg"></div>
 <div class="page-wrap">
 
   <nav class="nav" role="navigation" aria-label="Main">
@@ -167,6 +168,8 @@
     </div>
   </footer>
 </div>
+<script src="js/network-bg.js"></script>
+<script>new NetworkBackground(document.getElementById("network-bg-root"));</script>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -79,23 +79,12 @@ a:hover { color: var(--accent-secondary); }
 ::-webkit-scrollbar-thumb:hover { background: rgba(30,30,50,0.3); }
 
 /* ============================================================
-   BACKGROUND
+   BACKGROUND  — handled by network-bg.css / NetworkBackground
    ============================================================ */
-#bg-canvas {
+#network-bg-root {
   position: fixed; inset: 0; z-index: 0;
   pointer-events: none;
-}
-
-/* Soft atmospheric color washes behind everything */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 25%, rgba(26, 46, 90, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 45% at 85% 75%, rgba(13, 27, 62, 0.07) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 50% 5%,  rgba(26, 46, 90, 0.05) 0%, transparent 45%),
-    radial-gradient(ellipse 80% 50% at 50% 95%, rgba(13, 27, 62, 0.06) 0%, transparent 55%);
+  overflow: hidden;
 }
 
 .page-wrap {
