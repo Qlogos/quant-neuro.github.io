@@ -39,7 +39,7 @@
     repelStrength: 0.028,            // mild repulsion scaling
 
     /* colours — all in [r, g, b] so consumers can theme easily */
-    clearColor: [255, 253, 230],       // trail‑fade fill (matches background)
+    clearColor: [250, 249, 246],       // trail‑fade fill (matches background)
     clearAlpha: 1.0,                   // no trails; full clear each frame
 
     nodeColor: [10, 10, 15],           // base node rgb

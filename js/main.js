@@ -60,10 +60,26 @@
       e.preventDefault();
       const btn  = form.querySelector('button[type="submit"]');
       const orig = btn.innerHTML;
-      btn.innerHTML = 'Sent — Thank you! ✓';
+      btn.innerHTML = 'Sending...';
       btn.disabled  = true;
-      btn.style.opacity = '0.7';
-      setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; btn.style.opacity = '1'; form.reset(); }, 3500);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(res => {
+        if (res.ok) {
+          btn.innerHTML = 'Sent — Thank you! ✓';
+          btn.style.opacity = '0.7';
+          setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; btn.style.opacity = '1'; form.reset(); }, 3500);
+        } else {
+          btn.innerHTML = 'Error — try again';
+          btn.disabled = false;
+        }
+      }).catch(() => {
+        btn.innerHTML = 'Error — try again';
+        btn.disabled = false;
+      });
     });
   }
 
