@@ -33,7 +33,7 @@
     /* pulse behaviour */
     fireSpeed: 4,
     fireChance: 0.0001,
-    cascadeChance: 0.15,
+    cascadeChance: 0.1,
 
     /* node interaction */
     repelStrength: 0.028,            // mild repulsion scaling
@@ -59,6 +59,31 @@
     return `rgba(${c[0]},${c[1]},${c[2]},${a})`;
   }
 
+  function linkEndpoints(from, to) {
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    if (d === 0) return null;
+
+    const ux = dx / d;
+    const uy = dy / d;
+    const fromRadius = from.renderRadius();
+    const toRadius = to.renderRadius();
+
+    // Skip collapsed links if nodes drift inside each other's visible radius.
+    if (d <= fromRadius + toRadius) return null;
+
+    return {
+      x1: from.x + ux * fromRadius,
+      y1: from.y + uy * fromRadius,
+      x2: to.x - ux * toRadius,
+      y2: to.y - uy * toRadius,
+      length: d - fromRadius - toRadius,
+      ux,
+      uy,
+    };
+  }
+
   /* ---- Node ---- */
   class Node {
     constructor(W, H, opts) {
@@ -79,9 +104,12 @@
       if (this.y > H) { this.y = H; this.vy *= -1; }
       this.energy *= 0.94;
     }
+    renderRadius() {
+      return this.radius + this.energy * 4;
+    }
     draw(ctx, opts) {
       const glow = this.energy;
-      const r = this.radius + glow * 4;
+      const r = this.renderRadius();
       if (glow > 0.05) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, r + 6, 0, Math.PI * 2);
@@ -109,21 +137,28 @@
       this.alive = true;
     }
     update(fireSpeed) {
-      const dx = this.to.x - this.from.x;
-      const dy = this.to.y - this.from.y;
-      this.t += fireSpeed / Math.sqrt(dx * dx + dy * dy);
+      const segment = linkEndpoints(this.from, this.to);
+      if (!segment) {
+        this.alive = false;
+        return;
+      }
+
+      this.t += fireSpeed / segment.length;
       if (this.t >= 1) {
         this.to.energy = Math.min(1, this.to.energy + 0.6);
         this.alive = false;
       }
     }
     draw(ctx, opts) {
-      const x = this.from.x + (this.to.x - this.from.x) * this.t;
-      const y = this.from.y + (this.to.y - this.from.y) * this.t;
+      const segment = linkEndpoints(this.from, this.to);
+      if (!segment) return;
+
+      const x = segment.x1 + (segment.x2 - segment.x1) * this.t;
+      const y = segment.y1 + (segment.y2 - segment.y1) * this.t;
 
       // moving pulse trail (explicit, independent of clearAlpha)
       ctx.beginPath();
-      ctx.moveTo(this.from.x, this.from.y);
+      ctx.moveTo(segment.x1, segment.y1);
       ctx.lineTo(x, y);
       ctx.strokeStyle = rgba(opts.pulseColor, Math.max(0, 0.25 - this.t * 0.2));
       ctx.lineWidth = 1.5;
@@ -217,9 +252,11 @@
             const d = Math.sqrt(d2);
             const alpha = (1 - d / opts.connectDist) * 0.5; // even lighter edges
             const boost = (a.energy + b.energy) * 0.14;
+            const segment = linkEndpoints(a, b);
+            if (!segment) continue;
             ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
+            ctx.moveTo(segment.x1, segment.y1);
+            ctx.lineTo(segment.x2, segment.y2);
             ctx.strokeStyle = rgba(opts.edgeColor, alpha + boost);
             ctx.lineWidth = 0.2 + boost * 1.2;
             ctx.stroke();
