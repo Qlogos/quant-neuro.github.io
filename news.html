@@ -12,17 +12,7 @@
   <style>
     .hero {
       min-height: 44vh;
-      background:
-        radial-gradient(ellipse 65% 55% at 80% 25%, rgba(26,46,90,0.08) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 50% at 15% 75%, rgba(13,27,62,0.06) 0%, transparent 52%),
-        linear-gradient(165deg, #faf4e8 0%, #f3ebda 55%, #f7eed9 100%);
-    }
-    .news-card__img { position: relative; }
-    .news-card__img::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, rgba(26,46,90,0.03) 0%, transparent 65%);
-      pointer-events: none;
+      background: #faf4e8;
     }
   </style>
 </head>
@@ -46,9 +36,7 @@
   </nav>
 
   <section class="hero">
-    <div class="hero__orb hero__orb--cyan"  aria-hidden="true"></div>
-    <div class="hero__orb hero__orb--lilac" aria-hidden="true"></div>
-    <div class="hero__badge"><span class="dot"></span>Latest Updates</div>
+    <div class="hero__badge">Latest Updates</div>
     <h1>Lab <span class="gradient-text">News</span></h1>
     <p class="hero__sub">Talks, conferences, and highlights from the Quantum Neurobiology Lab.</p>
   </section>

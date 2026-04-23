@@ -189,21 +189,8 @@ a:hover { color: var(--accent-secondary); }
   position: relative; overflow: hidden;
 }
 
-/* Soft colour orbs */
-.hero__orb {
-  position: absolute; border-radius: 50%;
-  pointer-events: none; filter: blur(120px); opacity: 0;
-  animation: orbFade 2.5s var(--ease-out) forwards, orbDrift 20s var(--ease-sig) infinite alternate 2.5s;
-}
-.hero__orb--cyan  { width: 500px; height: 500px; background: rgba(26,46,90,0.18); top: 8%; left: -8%; }
-.hero__orb--lilac { width: 420px; height: 420px; background: rgba(13,27,62,0.20); bottom: 5%; right: -5%; animation-delay: 0.5s, 3s; }
-.hero__orb--warm  { width: 280px; height: 280px; background: rgba(26,46,90,0.12); bottom: 25%; left: 25%; animation-delay: 1s, 3.5s; }
-
-@keyframes orbFade { to { opacity: 1; } }
-@keyframes orbDrift {
-  0%   { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(30px, -22px) scale(1.06); }
-}
+/* Soft colour orbs — disabled per design request */
+.hero__orb { display: none !important; }
 
 .hero__badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -233,7 +220,7 @@ a:hover { color: var(--accent-secondary); }
   max-width: 900px;
 }
 .gradient-text {
-  background: linear-gradient(125deg, var(--accent-bright) 0%, var(--accent-secondary) 100%);
+  background: var(--accent-bright);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
