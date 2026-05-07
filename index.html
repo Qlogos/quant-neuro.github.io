@@ -1,28 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Enter Password</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuantNeuro — Access</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/network-bg.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #faf4e8;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .gate {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+      width: min(420px, 90vw);
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    }
+
+    .gate__logo {
+      height: 56px;
+      margin-bottom: 1.75rem;
+    }
+
+    .gate__title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+
+    .gate__sub {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+
+    .gate__input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.7);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      color: #1a1a2e;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 1rem;
+    }
+
+    .gate__input:focus { border-color: #4f46e5; }
+
+    .gate__btn {
+      width: 100%;
+      padding: 0.75rem;
+      background: #1a1a2e;
+      color: #faf4e8;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .gate__btn:hover { background: #2d2d4e; }
+    .gate__btn:active { transform: scale(0.98); }
+
+    .gate__error {
+      margin-top: 0.85rem;
+      font-size: 0.85rem;
+      color: #dc2626;
+      min-height: 1.2em;
+    }
+  </style>
 </head>
-<body style="text-align:center; margin-top:100px; font-family:sans-serif;">
+<body>
 
-    <h2>Enter Access Code</h2>
+<div id="network-bg-root" class="network-bg"></div>
 
-    <input type="password" id="pass" placeholder="Password">
-    <button onclick="checkPass()">Enter</button>
+<div class="gate">
+  <img class="gate__logo" src="images/design_assets/logo_QUANTNEURO.png" alt="QuantNeuro">
+  <div class="gate__title">Access Required</div>
+  <p class="gate__sub">This site is currently password-protected.</p>
 
-    <p id="error" style="color:red;"></p>
+  <input class="gate__input" type="password" id="pass" placeholder="Enter access code" autofocus>
+  <button class="gate__btn" onclick="checkPass()">Enter</button>
+  <p class="gate__error" id="error"></p>
+</div>
 
-    <script>
-        function checkPass() {
-            var input = document.getElementById("pass").value;
+<script src="js/network-bg.js"></script>
+<script>
+  // If already verified, skip straight to the destination.
+  (function () {
+    if (sessionStorage.getItem('VERIFIED') === 'true') {
+      var dest = sessionStorage.getItem('AUTH_REDIRECT') || 'home.html';
+      sessionStorage.removeItem('AUTH_REDIRECT');
+      window.location.replace(dest);
+    }
+  })();
 
-            if (input === "quant123") {  // <-- your password
-                window.location.href = "home.html";
-            } else {
-                document.getElementById("error").innerText = "Wrong password";
-            }
-        }
-    </script>
+  document.getElementById('pass').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') checkPass();
+  });
+
+  function checkPass() {
+    var input = document.getElementById('pass').value;
+
+    if (input === 'quant123') {
+      sessionStorage.setItem('VERIFIED', 'true');
+      var dest = sessionStorage.getItem('AUTH_REDIRECT') || 'home.html';
+      sessionStorage.removeItem('AUTH_REDIRECT');
+      window.location.replace(dest);
+    } else {
+      document.getElementById('error').textContent = 'Incorrect access code.';
+      document.getElementById('pass').value = '';
+      document.getElementById('pass').focus();
+    }
+  }
+</script>
 
 </body>
 </html>
