@@ -86,22 +86,24 @@
 
   /* ---- Node ---- */
   class Node {
-    constructor(W, H, opts) {
+    constructor(W, H, opts, scaledSpeed) {
       this.x = Math.random() * W;
       this.y = Math.random() * H;
-      this.vx = (Math.random() - 0.5) * opts.speed;
-      this.vy = (Math.random() - 0.5) * opts.speed;
+      this.vx = (Math.random() - 0.5) * scaledSpeed;
+      this.vy = (Math.random() - 0.5) * scaledSpeed;
       this.radius = opts.nodeRadiusMin + Math.random() * (opts.nodeRadiusMax - opts.nodeRadiusMin);
       this.energy = 0;
       this._lastFireAt = 0; // timestamp for 1 Hz hard cap
     }
-    update(W, H) {
+    update(W, H, maxSpeed) {
       this.x += this.vx;
       this.y += this.vy;
       if (this.x < 0) { this.x = 0; this.vx *= -1; }
       if (this.x > W) { this.x = W; this.vx *= -1; }
       if (this.y < 0) { this.y = 0; this.vy *= -1; }
       if (this.y > H) { this.y = H; this.vy *= -1; }
+      const spd = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+      if (spd > maxSpeed) { this.vx = (this.vx / spd) * maxSpeed; this.vy = (this.vy / spd) * maxSpeed; }
       this.energy *= 0.94;
     }
     renderRadius() {
@@ -213,12 +215,14 @@
     _resize() {
       this.W = this.canvas.width = this.container.offsetWidth;
       this.H = this.canvas.height = this.container.offsetHeight;
+      const diag = Math.sqrt(this.W * this.W + this.H * this.H);
+      this.speedScale = Math.max(0.15, Math.min(1, diag / 2203));
     }
 
     _initNodes() {
       this.nodes = Array.from(
         { length: this.opts.nodeCount },
-        () => new Node(this.W, this.H, this.opts)
+        () => new Node(this.W, this.H, this.opts, this.opts.speed * this.speedScale)
       );
     }
 
@@ -304,7 +308,7 @@
       }
 
       /* update & draw */
-      for (const n of nodes) { n.update(W, H); n.draw(ctx, opts); }
+      for (const n of nodes) { n.update(W, H, opts.speed * this.speedScale); n.draw(ctx, opts); }
       for (const p of this.pulses) { p.update(opts.fireSpeed); p.draw(ctx, opts); }
       this.pulses = this.pulses.filter(p => p.alive);
 
