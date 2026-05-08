@@ -49,7 +49,7 @@
     pulseHaloColor: [15, 15, 20],
 
     /* motion */
-    speed: 0.4,                        // max per‑axis velocity
+    speed: 0.1,                        // max per‑axis velocity
     nodeRadiusMin: 4,
     nodeRadiusMax: 8,
   };
