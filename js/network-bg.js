@@ -27,7 +27,7 @@
   /* ---- default palette & tuning knobs ---- */
   const DEFAULTS = {
     /* node / edge counts & distances */
-    nodeCount: 30,
+    density: 0.3,          // avg nodes per 100×100 px area — scales with screen size
     connectDist: 300,
 
     /* pulse behaviour */
@@ -217,11 +217,27 @@
       this.H = this.canvas.height = this.container.offsetHeight;
       const diag = Math.sqrt(this.W * this.W + this.H * this.H);
       this.speedScale = Math.max(0.15, Math.min(1, diag / 2203));
+      // Adjust node count live on resize if nodes are already running
+      if (this.nodes.length > 0) this._adjustNodes();
+    }
+
+    _nodeTarget() {
+      return Math.max(1, Math.round(this.W * this.H / 10000 * this.opts.density));
+    }
+
+    _adjustNodes() {
+      const target = this._nodeTarget();
+      // Add new nodes at random positions to reach target
+      while (this.nodes.length < target) {
+        this.nodes.push(new Node(this.W, this.H, this.opts, this.opts.speed * this.speedScale));
+      }
+      // Remove excess nodes from the end
+      if (this.nodes.length > target) this.nodes.length = target;
     }
 
     _initNodes() {
       this.nodes = Array.from(
-        { length: this.opts.nodeCount },
+        { length: this._nodeTarget() },
         () => new Node(this.W, this.H, this.opts, this.opts.speed * this.speedScale)
       );
     }
