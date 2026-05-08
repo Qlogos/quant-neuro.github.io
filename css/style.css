@@ -787,21 +787,27 @@ a:hover { color: var(--accent-secondary); }
 }
 .dna-divider .strand-1 {
   stroke: var(--accent);
-  stroke-width: 1.5;
+  stroke-width: 2;
   fill: none;
-  stroke-dasharray: 6 4;
+  stroke-dasharray: 6 10;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
   animation: dnaStrandScroll 4s linear infinite;
 }
 .dna-divider .strand-2 {
   stroke: var(--accent-secondary);
-  stroke-width: 1.5;
+  stroke-width: 2;
   fill: none;
-  stroke-dasharray: 6 4;
+  stroke-dasharray: 6 10;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
   animation: dnaStrandScroll 4s linear infinite reverse;
 }
 .dna-divider .rung {
   stroke: var(--accent);
-  stroke-width: 0.8;
+  stroke-width: 1;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
   opacity: 0.5;
 }
 .dna-divider .basepair {
