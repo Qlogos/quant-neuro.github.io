@@ -83,4 +83,45 @@
     });
   }
 
+  /* ══════════════════════════════════════════════════════════
+     DNA DIVIDER — responsive wave period
+  ══════════════════════════════════════════════════════════ */
+  const dnaDivider = document.querySelector('.dna-divider');
+  const dnaSvg     = dnaDivider && dnaDivider.querySelector('svg');
+  if (dnaDivider && dnaSvg) {
+    const PERIOD = 150;   // wave period in screen pixels — constant on all screens
+    const MID    = 30;    // vertical centre of the 60-unit viewBox
+    const AMP    = 20.9;  // amplitude (units)
+    const PHASE2 = (2 * Math.PI) / 3;   // strand-2 phase offset
+    const RUNG_INTERVAL = PERIOD / 10;  // one rung every 15 px
+
+    function buildDNA() {
+      const W = dnaDivider.offsetWidth;
+      const steps = W * 2;   // 2 sample points per pixel → smooth curve
+      let d1 = '', d2 = '', rungs = '';
+
+      for (let i = 0; i <= steps; i++) {
+        const x  = (W / steps) * i;
+        const y1 = MID - AMP * Math.sin(2 * Math.PI * x / PERIOD);
+        const y2 = MID - AMP * Math.sin(2 * Math.PI * x / PERIOD + PHASE2);
+        const cmd = i === 0 ? 'M' : 'L';
+        d1 += `${cmd}${x.toFixed(1)},${y1.toFixed(1)} `;
+        d2 += `${cmd}${x.toFixed(1)},${y2.toFixed(1)} `;
+      }
+
+      for (let x = 0; x <= W; x += RUNG_INTERVAL) {
+        const y1 = MID - AMP * Math.sin(2 * Math.PI * x / PERIOD);
+        const y2 = MID - AMP * Math.sin(2 * Math.PI * x / PERIOD + PHASE2);
+        rungs += `<line class="rung" x1="${x.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+      }
+
+      dnaSvg.setAttribute('viewBox', `0 0 ${W} 60`);
+      dnaSvg.setAttribute('preserveAspectRatio', 'none');
+      dnaSvg.innerHTML = `<path class="strand-1" d="${d1}"/><path class="strand-2" d="${d2}"/>${rungs}`;
+    }
+
+    buildDNA();
+    window.addEventListener('resize', buildDNA, { passive: true });
+  }
+
 })();
