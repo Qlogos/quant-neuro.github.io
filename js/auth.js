@@ -1,6 +1,6 @@
 // ─── Site-wide password protection ──────────────────────────────────────────
 // Set to false before pushing to production to open the site publicly.
-const PROTECTION_ENABLED = true;
+const PROTECTION_ENABLED = false;
 
 (function () {
   if (!PROTECTION_ENABLED) return;
