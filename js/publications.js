@@ -98,7 +98,7 @@
     var listSlot     = document.getElementById('pub-list');
     if (!featuredSlot || !listSlot) return;
 
-    fetch('js/publications.bib')
+    fetch('/js/publications.bib')
       .then(function (res) { return res.text(); })
       .then(function (bibText) {
         var pubs = BibtexParser.parseToJSON(bibText);
