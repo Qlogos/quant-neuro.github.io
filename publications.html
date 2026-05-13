@@ -46,47 +46,8 @@
     <h2 class="section__title reveal">Recent Publications</h2>
     <p class="section__desc reveal">A selection of our lab's published work. For the complete list, please see Dr. Craddock's Google Scholar profile.</p>
 
-    <div class="glass-card pub-item reveal">
-        <a class="pub-item__link" href="https://www.mdpi.com/1099-4300/28/2/204" target="_blank" rel="noopener" aria-label="Open publication details"></a>
-        <div class="pub-item__content">
-          <span class="pub-item__tag pub-item__tag--journal">Journal Article</span>
-          <h3>Quantum Information Flow in Microtubule Tryptophan Networks</h3>
-          <p class="pub-item__meta">Gassab, L., Pusuluk, O., & Craddock, T. J. (2026). Quantum Information Flow in Microtubule Tryptophan Networks. Entropy, 28(2), 204.</p>
-        </div>
-        <img class="pub-item__thumbnail" src="images\design_assets\publication_4.png" alt="Quantum information flow cover" />
-    </div>
-
-    <div class="pub-list">
-      <div class="glass-card pub-item reveal">
-        <a class="pub-item__link" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12863/0000/Chemical-induced-changes-in-the-optical-properties-of-aromatic-amino/10.1117/12.3003458.full" target="_blank" rel="noopener" aria-label="Open publication details"></a>
-        <div class="pub-item__content">
-          <span class="pub-item__tag pub-item__tag--journal">Journal Article</span>
-          <h3>Chemical-induced changes in the optical properties of aromatic amino acid lattices in protein polymers</h3>
-          <p class="pub-item__meta">Gassab, L., & Craddock, T. J. (2026). Optical properties of the cytoskeleton: a review of light–matter interactions, quantum effects, and biological implications. Journal of Physics: Photonics, 8(1), 012006.</p>
-        </div>
-        <img class="pub-item__thumbnail" src="images\design_assets\publication_1.png" alt="Microtubule quantum effects cover" />
-      </div>
-
-      <div class="glass-card pub-item reveal">
-        <a class="pub-item__link" href="https://arxiv.org/abs/2504.15288" target="_blank" rel="noopener" aria-label="Open publication details"></a>
-        <div class="pub-item__content">
-          <span class="pub-item__tag pub-item__tag--journal">Journal Article</span>
-          <h3>Magnetic Isotope Effects on Radical Pair Recombination in Neuronal Microtubules</h3>
-          <p class="pub-item__meta">Zadeh-Haghighi, H., Siguenza, C. R., Smith, R. P., Simon, C., & Craddock, T. J. (2025). Magnetic Field-dependent Isotope Effect Supports Radical Pair Mechanism in Tubulin Polymerization. arXiv preprint arXiv:2504.15288.</p>
-        </div>
-        <img class="pub-item__thumbnail" src="images\design_assets\publication_2.png" alt="Magnetic isotope effects cover" />
-      </div>
-
-      <div class="glass-card pub-item reveal">
-        <a class="pub-item__link" href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13340/3043206/Quantum-mechanisms-in-the-brain--from-conjectures-and-theories/10.1117/12.3043206.full" target="_blank" rel="noopener" aria-label="Open publication details"></a>
-        <div class="pub-item__content">
-          <span class="pub-item__tag pub-item__tag--journal">Journal Article</span>
-          <h3>Quantum mechanisms in the brain: from conjectures and theories to experimental evidence</h3>
-          <p class="pub-item__meta">Craddock, T. J. (2025, March). Quantum mechanisms in the brain: from conjectures and theories to experimental evidence. In Quantum Effects and Measurement Techniques in Biology and Biophotonics II (Vol. 13340, p. 1334003). SPIE.</p>
-        </div>
-        <img class="pub-item__thumbnail" src="images\design_assets\publication_5.png" alt="Quantum mechanisms cover" />
-      </div>
-    </div>
+    <div id="pub-featured"></div>
+    <div id="pub-list" class="pub-list"></div>
 
     <div style="text-align:center;margin-top:52px;" class="reveal">
       <a href="https://scholar.google.com/citations?hl=en&user=5oFD8eMAAAAJ" class="btn btn--glass" target="_blank" rel="noopener">
@@ -106,5 +67,7 @@
 <script src="js/network-bg.js"></script>
 <script>new NetworkBackground(document.getElementById("network-bg-root"));</script>
 <script src="js/main.js"></script>
+<script src="https://unpkg.com/bibtex-js-parser@1.1.6/umd/bibtex-js-parser.js"></script>
+<script src="js/publications.js"></script>
 </body>
 </html>

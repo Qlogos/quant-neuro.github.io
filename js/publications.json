@@ -1,0 +1,57 @@
+[
+  {
+    "entryType": "article",
+    "title": "Quantum Information Flow in Microtubule Tryptophan Networks",
+    "author": "Gassab, L. and Pusuluk, O. and Craddock, T. J.",
+    "journal": "Entropy",
+    "volume": "28",
+    "number": "2",
+    "pages": "204",
+    "year": 2026,
+    "url": "https://www.mdpi.com/1099-4300/28/2/204",
+    "thumbnail": "images/design_assets/publication_4.png",
+    "thumbnailAlt": "Quantum information flow cover",
+    "featured": true
+  },
+  {
+    "entryType": "article",
+    "title": "Chemical-induced changes in the optical properties of aromatic amino acid lattices in protein polymers",
+    "author": "Gassab, L. and Craddock, T. J.",
+    "journal": "Journal of Physics: Photonics",
+    "volume": "8",
+    "number": "1",
+    "pages": "012006",
+    "year": 2026,
+    "url": "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12863/0000/Chemical-induced-changes-in-the-optical-properties-of-aromatic-amino/10.1117/12.3003458.full",
+    "thumbnail": "images/design_assets/publication_1.png",
+    "thumbnailAlt": "Microtubule quantum effects cover",
+    "featured": false
+  },
+  {
+    "entryType": "misc",
+    "title": "Magnetic Isotope Effects on Radical Pair Recombination in Neuronal Microtubules",
+    "author": "Zadeh-Haghighi, H. and Siguenza, C. R. and Smith, R. P. and Simon, C. and Craddock, T. J.",
+    "note": "arXiv preprint arXiv:2504.15288",
+    "year": 2025,
+    "month": 4,
+    "url": "https://arxiv.org/abs/2504.15288",
+    "thumbnail": "images/design_assets/publication_2.png",
+    "thumbnailAlt": "Magnetic isotope effects cover",
+    "featured": false
+  },
+  {
+    "entryType": "inproceedings",
+    "title": "Quantum mechanisms in the brain: from conjectures and theories to experimental evidence",
+    "author": "Craddock, T. J.",
+    "booktitle": "Quantum Effects and Measurement Techniques in Biology and Biophotonics II",
+    "volume": "13340",
+    "pages": "1334003",
+    "year": 2025,
+    "month": 3,
+    "publisher": "SPIE",
+    "url": "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13340/3043206/Quantum-mechanisms-in-the-brain--from-conjectures-and-theories/10.1117/12.3043206.full",
+    "thumbnail": "images/design_assets/publication_5.png",
+    "thumbnailAlt": "Quantum mechanisms cover",
+    "featured": false
+  }
+]
