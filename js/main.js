@@ -95,6 +95,40 @@
   }
 
   /* ══════════════════════════════════════════════════════════
+     ALUMNI CAROUSEL  — arrow navigation
+     (Bios stay text-selectable: no drag handler intercepts mouse.)
+  ══════════════════════════════════════════════════════════ */
+  document.querySelectorAll('.alumni-carousel').forEach(carousel => {
+    const viewport = carousel.querySelector('.alumni-viewport');
+    const track    = carousel.querySelector('.alumni-track');
+    const prevBtn  = carousel.querySelector('.alumni-carousel__nav--prev');
+    const nextBtn  = carousel.querySelector('.alumni-carousel__nav--next');
+    if (!viewport || !track) return;
+
+    // Width of one "step" = card width + the flex gap. Read live so
+    // the responsive breakpoints (card shrinks on mobile) Just Work.
+    function step() {
+      const card = track.querySelector('.alumni-card');
+      if (!card) return 320;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card.offsetWidth + gap;
+    }
+
+    // Disable arrows at the ends so users get a visual cue.
+    function syncArrows() {
+      const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+      if (prevBtn) prevBtn.disabled = viewport.scrollLeft <= 1;
+      if (nextBtn) nextBtn.disabled = viewport.scrollLeft >= maxScroll - 1;
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => viewport.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if (nextBtn) nextBtn.addEventListener('click', () => viewport.scrollBy({ left:  step(), behavior: 'smooth' }));
+    viewport.addEventListener('scroll', syncArrows, { passive: true });
+    window.addEventListener('resize', syncArrows);
+    syncArrows();
+  });
+
+  /* ══════════════════════════════════════════════════════════
      DNA DIVIDER — responsive wave period
   ══════════════════════════════════════════════════════════ */
   const dnaDivider = document.querySelector('.dna-divider');

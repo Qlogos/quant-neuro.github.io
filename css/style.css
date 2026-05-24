@@ -731,6 +731,127 @@ a:hover { color: var(--accent-secondary); }
 }
 
 /* ============================================================
+   ALUMNI CAROUSEL  — manually-scrolling horizontal strip
+   ============================================================
+   Markup expected:
+     <div class="alumni-carousel">
+       <button class="alumni-carousel__nav alumni-carousel__nav--prev">…</button>
+       <div class="alumni-viewport">             ← scrollable container
+         <div class="alumni-track">              ← horizontal flex of cards
+           <div class="glass-card alumni-card"> … </div>
+           …
+         </div>
+       </div>
+       <button class="alumni-carousel__nav alumni-carousel__nav--next">…</button>
+     </div>
+   Interaction handled by JS in main.js (arrow clicks + drag-to-scroll).
+*/
+.alumni-intro {
+  text-align: center;
+  color: var(--text-dim);
+  max-width: 640px;
+  margin: 0 auto 32px;
+  font-size: 0.95rem;
+}
+
+.alumni-carousel {
+  position: relative;
+  display: flex; align-items: center;
+  gap: 14px;
+}
+
+.alumni-viewport {
+  flex: 1 1 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 12px 4px;
+  /* Hide scrollbar — arrow buttons are the interface */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Soft edge fade so cards drift in/out smoothly */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent);
+          mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent);
+}
+.alumni-viewport::-webkit-scrollbar { display: none; }
+
+.alumni-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+}
+
+.alumni-card {
+  flex: 0 0 340px;
+  padding: 28px 24px;
+  display: flex; flex-direction: column;
+  align-items: center;
+  text-align: center;
+  scroll-snap-align: start;
+}
+.alumni-card__photo {
+  width: 128px; height: 128px;
+  border-radius: 50%; object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.60);
+  margin-bottom: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.alumni-card:hover .alumni-card__photo {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow), 0 6px 26px rgba(0,0,0,0.10);
+}
+.alumni-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-bright);
+  margin-bottom: 10px;
+}
+.alumni-card__bio {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* Arrow buttons */
+.alumni-carousel__nav {
+  flex: 0 0 auto;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px) saturate(1.5);
+  -webkit-backdrop-filter: blur(14px) saturate(1.5);
+  color: var(--accent);
+  cursor: pointer;
+  box-shadow: 0 4px 18px var(--glass-shadow);
+  transition: background var(--t-fast), border-color var(--t-fast),
+              box-shadow var(--t-fast), transform var(--t-fast),
+              opacity var(--t-fast);
+}
+.alumni-carousel__nav:hover:not(:disabled) {
+  background: var(--glass-hover);
+  border-color: var(--accent);
+  box-shadow: 0 0 18px var(--accent-glow), 0 6px 22px var(--glass-shadow-hi);
+  transform: scale(1.05);
+}
+.alumni-carousel__nav:active:not(:disabled) { transform: scale(0.96); }
+.alumni-carousel__nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.alumni-carousel__nav svg { width: 20px; height: 20px; }
+
+@media (max-width: 640px) {
+  .alumni-carousel__nav { width: 38px; height: 38px; }
+  .alumni-card          { flex: 0 0 280px; }
+  .alumni-card__photo   { width: 112px; height: 112px; }
+}
+
+/* ============================================================
    CONTACT
    ============================================================ */
 .contact-grid {
