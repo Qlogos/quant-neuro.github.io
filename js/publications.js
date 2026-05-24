@@ -1,3 +1,12 @@
+/* ============================================================
+   publications.js — renders publications from a BibTeX file.
+
+   External dependency: BibtexParser (global)
+     Loaded via CDN in publications/index.html:
+       <script src="https://unpkg.com/bibtex-js-parser@1.1.6/umd/bibtex-js-parser.js"></script>
+     Must be included BEFORE this file. No SRI hash currently — consider
+     adding `integrity="sha384-..."` if you want supply-chain protection.
+   ============================================================ */
 (function () {
   'use strict';
 
@@ -24,7 +33,7 @@
     var title   = pub.title || '';
 
     if (pub.type === 'article') {
-      var venue = pub.journal || '';
+      let venue = pub.journal || '';
       if (pub.volume) venue += ', ' + pub.volume;
       if (pub.number) venue += '(' + pub.number + ')';
       if (pub.pages)  venue += ', ' + pub.pages;
@@ -32,7 +41,7 @@
     }
 
     if (pub.type === 'inproceedings' || pub.type === 'conference') {
-      var venue = pub.booktitle ? 'In ' + pub.booktitle : '';
+      let venue = pub.booktitle ? 'In ' + pub.booktitle : '';
       if (pub.volume) venue += ' (Vol. ' + pub.volume;
       if (pub.pages)  venue += ', p. ' + pub.pages;
       if (pub.volume) venue += ')';
@@ -60,22 +69,6 @@
       '</div>' +
       '<img class="pub-item__thumbnail" src="' + (pub.thumbnail || '') + '" alt="' + (pub.thumbnailalt || '') + '" />';
     return card;
-  }
-
-  // Mirrors IntersectionObserver settings from main.js for injected .reveal cards.
-  function observeCards(cards) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          var delay = Array.from(e.target.parentNode.children).indexOf(e.target) * 80;
-          setTimeout(function () {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }, delay);
-        }
-      });
-    }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
-    cards.forEach(function (el) { io.observe(el); });
   }
 
   // Converts BibTeX month values to 1-12.
@@ -116,7 +109,8 @@
           newCards.push(card);
           (i === 0 ? featuredSlot : listSlot).appendChild(card);
         });
-        observeCards(newCards);
+        // observeReveals lives in main.js (window.QN); main.js is loaded before this file.
+        window.QN.observeReveals(newCards);
       })
       .catch(function (err) {
         console.error('publications.js: failed to load or parse publications.bib —', err);

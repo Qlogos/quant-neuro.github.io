@@ -1,0 +1,23 @@
+{
+  "name": "quantneuro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qlogos/quant-neuro.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Qlogos/quant-neuro.github.io/issues"
+  },
+  "homepage": "https://github.com/Qlogos/quant-neuro.github.io#readme",
+  "format": "prettier --write .",
+  "format:check": "prettier --check ."
+}

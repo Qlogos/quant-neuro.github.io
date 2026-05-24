@@ -9,33 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/network-bg.css">
-  <style>
-    .hero {
-      min-height: 40vh;
-      background: #faf4e8;
-    }
-  </style>
 </head>
 <body>
 <div id="network-bg-root" class="network-bg"></div>
 <div class="page-wrap">
 
-  <nav class="nav" role="navigation" aria-label="Main">
-    <a href="/" class="nav__logo">
-      <img src="/images/design_assets/logo_QUANTNEURO.png" alt="QuantNeuro">
-    </a>
-    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <ul class="nav__links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/research/">Research</a></li>
-      <li><a href="/publications/">Publications</a></li>
-      <li><a href="/news/">News</a></li>
-      <li><a href="/team/">Team</a></li>
-      <li><a href="/contact/" class="active">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- NAV (injected by /js/nav.js) -->
+  <div id="nav-slot"></div>
 
-  <section class="hero">
+  <section class="hero hero--sm">
     <div class="hero__badge">Reach Out</div>
     <h1><span class="gradient-text">Contact</span> Us</h1>
     <p class="hero__sub">Thanks for reaching out! We are interested in hearing from trainees, funders, and collaborators alike.</p>
@@ -135,6 +117,7 @@
 </div>
 <script src="/js/network-bg.js"></script>
 <script>new NetworkBackground(document.getElementById("network-bg-root"));</script>
+<script src="/js/nav.js"></script>
 <script src="/js/main.js"></script>
 </body>
 </html>

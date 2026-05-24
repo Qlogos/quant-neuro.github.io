@@ -1,0 +1,10 @@
+# Mirror / deploy copy — don't double-format
+quant-neuro.github.io/
+
+# Vendored / generated
+node_modules/
+*.bib
+
+# Claude internals
+.claude/
+CLAUDE.md

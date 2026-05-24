@@ -261,49 +261,77 @@
       ctx.fillStyle = rgba(opts.clearColor, opts.clearAlpha);
       ctx.fillRect(0, 0, W, H);
 
-      /* edges */
-      const cd2 = opts.connectDist * opts.connectDist;
+      /* ----- Spatial grid -----
+         Cell size = connectDist, which is the larger of the two
+         interaction radii (edge linking and repulsion). With this
+         cell size every interacting pair lives in the same or an
+         adjacent cell, so we only check 9 cells per node instead
+         of all N. Both the edge and repulsion passes share the
+         same grid and are merged into one neighbor walk below. */
+      const cellSize = opts.connectDist;
+      const grid = new Map();
       for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i], b = nodes[j];
-          const dx = b.x - a.x, dy = b.y - a.y;
-          const d2 = dx * dx + dy * dy;
-          if (d2 < cd2) {
-            const d = Math.sqrt(d2);
-            const alpha = (1 - d / opts.connectDist) * 0.5; // even lighter edges
-            const boost = (a.energy + b.energy) * 0.14;
-            const segment = linkEndpoints(a, b);
-            if (!segment) continue;
-            ctx.beginPath();
-            ctx.moveTo(segment.x1, segment.y1);
-            ctx.lineTo(segment.x2, segment.y2);
-            ctx.strokeStyle = rgba(opts.edgeColor, alpha + boost);
-            ctx.lineWidth = 0.2 + boost * 1.2;
-            ctx.stroke();
-          }
-        }
+        const n = nodes[i];
+        n._gridIdx = i;
+        const key = Math.floor(n.x / cellSize) + ',' + Math.floor(n.y / cellSize);
+        let cell = grid.get(key);
+        if (!cell) { cell = []; grid.set(key, cell); }
+        cell.push(n);
       }
 
-      /* soft size-dependent repulsion */
+      /* ----- Merged edge + repulsion pass -----
+         For each node A we look at neighbors in the 3×3 cell
+         block around it. The `b._gridIdx > a._gridIdx` guard
+         ensures every unordered pair is visited exactly once
+         (and also skips self). */
+      const cd2 = opts.connectDist * opts.connectDist;
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
-        for (let j = i + 1; j < nodes.length; j++) {
-          const b = nodes[j];
-          const dx = b.x - a.x;
-          const dy = b.y - a.y;
-          const d2 = dx * dx + dy * dy;
-          if (d2 === 0) continue;
-          const d = Math.sqrt(d2);
-          const influence = (a.radius + b.radius) * 0.5;
-          const minDist = influence * 6; // larger nodes push further apart
-          if (d < minDist) {
-            const force = (1 - d / minDist) * opts.repelStrength;
-            const fx = (dx / d) * force;
-            const fy = (dy / d) * force;
-            a.vx -= fx;
-            a.vy -= fy;
-            b.vx += fx;
-            b.vy += fy;
+        const cx = Math.floor(a.x / cellSize);
+        const cy = Math.floor(a.y / cellSize);
+
+        for (let dCx = -1; dCx <= 1; dCx++) {
+          for (let dCy = -1; dCy <= 1; dCy++) {
+            const cell = grid.get((cx + dCx) + ',' + (cy + dCy));
+            if (!cell) continue;
+
+            for (let k = 0; k < cell.length; k++) {
+              const b = cell[k];
+              if (b._gridIdx <= a._gridIdx) continue;
+
+              const dx = b.x - a.x;
+              const dy = b.y - a.y;
+              const d2 = dx * dx + dy * dy;
+              if (d2 === 0) continue;
+              const d = Math.sqrt(d2);
+
+              /* edge */
+              if (d2 < cd2) {
+                const alpha = (1 - d / opts.connectDist) * 0.5;
+                const boost = (a.energy + b.energy) * 0.14;
+                const segment = linkEndpoints(a, b);
+                if (segment) {
+                  ctx.beginPath();
+                  ctx.moveTo(segment.x1, segment.y1);
+                  ctx.lineTo(segment.x2, segment.y2);
+                  ctx.strokeStyle = rgba(opts.edgeColor, alpha + boost);
+                  ctx.lineWidth = 0.2 + boost * 1.2;
+                  ctx.stroke();
+                }
+              }
+
+              /* size-dependent repulsion */
+              const minDist = (a.radius + b.radius) * 3; // = influence * 6 with influence = (rA+rB)/2
+              if (d < minDist) {
+                const force = (1 - d / minDist) * opts.repelStrength;
+                const fx = (dx / d) * force;
+                const fy = (dy / d) * force;
+                a.vx -= fx;
+                a.vy -= fy;
+                b.vx += fx;
+                b.vy += fy;
+              }
+            }
           }
         }
       }

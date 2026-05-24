@@ -187,7 +187,13 @@ a:hover { color: var(--accent-secondary); }
   text-align: center;
   padding: calc(var(--nav-height) + 60px) 24px 100px;
   position: relative; overflow: hidden;
+  /* Opaque cream surface so the network background does not show through the hero. */
+  background: var(--bg);
 }
+/* Hero size variants — sub-pages use a shorter hero than the landing page. */
+.hero--sm   { min-height: 40vh; }
+.hero--md   { min-height: 44vh; }
+.hero--tall { min-height: 52vh; }
 
 /* Soft colour orbs — disabled per design request */
 .hero__orb { display: none !important; }
@@ -439,6 +445,17 @@ a:hover { color: var(--accent-secondary); }
 }
 .research-area__visual svg { width: 72%; height: 72%; opacity: 0.70; }
 
+/* Per-area tint behind each research visual. */
+.research-area:nth-child(1) .research-area__visual {
+  background: radial-gradient(ellipse at 50% 50%, rgba(26,46,90,0.08) 0%, rgba(250,244,232,0.6) 60%);
+}
+.research-area:nth-child(2) .research-area__visual {
+  background: radial-gradient(ellipse at 50% 50%, rgba(13,27,62,0.08) 0%, rgba(250,244,232,0.6) 60%);
+}
+.research-area:nth-child(3) .research-area__visual {
+  background: radial-gradient(ellipse at 50% 50%, rgba(20,38,75,0.06) 0%, rgba(250,244,232,0.6) 60%);
+}
+
 .research-area__content h3 {
   font-family: var(--font-heading);
   font-size: 1.75rem; font-weight: 700;
@@ -667,6 +684,32 @@ a:hover { color: var(--accent-secondary); }
   transform: scale(1.03);
 }
 .team-card--pi .team-card__photo { width: 150px; height: 150px; margin: 0; }
+
+/* Initials placeholder shown when a team member has no photo. */
+.team-initials {
+  width: 108px; height: 108px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(26,46,90,0.10), rgba(13,27,62,0.10));
+  border: 1.5px solid rgba(26,46,90,0.18);
+  font-family: var(--font-heading);
+  font-size: 1.5rem; font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin: 0 auto 16px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+}
+.team-initials--lg {
+  width: 136px; height: 136px; font-size: 1.8rem; margin: 0;
+}
+.team-card:hover .team-initials {
+  border-color: var(--accent);
+  box-shadow: 0 0 22px var(--accent-glow), 0 8px 28px rgba(0,0,0,0.08);
+  transform: scale(1.03);
+}
+.team-card--pi:hover .team-initials--lg { transform: scale(1.03); }
 
 .team-card h3 {
   font-family: var(--font-heading);

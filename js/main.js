@@ -8,6 +8,27 @@
   'use strict';
 
   /* ══════════════════════════════════════════════════════════
+     SHARED HELPERS  (exposed on window.QN for other scripts)
+
+     observeReveals(elements) — fades in elements with the
+     `.reveal` class as they scroll into view, staggered by
+     their index within the parent. Used here for static
+     content and by publications.js for dynamically inserted
+     cards. Keep timing/threshold in sync by editing only here.
+  ══════════════════════════════════════════════════════════ */
+  const QN = window.QN = window.QN || {};
+  QN.observeReveals = function (elements) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const delay = Array.from(e.target.parentNode.children).indexOf(e.target) * 80;
+        setTimeout(() => { e.target.classList.add('visible'); io.unobserve(e.target); }, delay);
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+    elements.forEach(el => io.observe(el));
+  };
+
+  /* ══════════════════════════════════════════════════════════
      NAV SCROLL
   ══════════════════════════════════════════════════════════ */
   const nav = document.querySelector('.nav');
@@ -39,17 +60,7 @@
      SCROLL REVEAL
   ══════════════════════════════════════════════════════════ */
   const reveals = document.querySelectorAll('.reveal');
-  if (reveals.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const delay = Array.from(e.target.parentNode.children).indexOf(e.target) * 80;
-          setTimeout(() => { e.target.classList.add('visible'); io.unobserve(e.target); }, delay);
-        }
-      });
-    }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
-    reveals.forEach(el => io.observe(el));
-  }
+  if (reveals.length) QN.observeReveals(reveals);
 
   /* ══════════════════════════════════════════════════════════
      CONTACT FORM
@@ -89,7 +100,7 @@
   const dnaDivider = document.querySelector('.dna-divider');
   const dnaSvg     = dnaDivider && dnaDivider.querySelector('svg');
   if (dnaDivider && dnaSvg) {
-    const PERIOD = 150;   // wave period in screen pixels — constant on all screens
+    const PERIOD = 500;   // wave period in screen pixels — constant on all screens
     const MID    = 30;    // vertical centre of the 60-unit viewBox
     const AMP    = 20.9;  // amplitude (units)
     const PHASE2 = (2 * Math.PI) / 3;   // strand-2 phase offset
