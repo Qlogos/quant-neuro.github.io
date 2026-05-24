@@ -1,0 +1,28 @@
+#!/bin/sh
+# ──────────────────────────────────────────────────────────────────
+# Pre-commit hook: refresh ?v=<hash> on CSS/JS links in HTML files
+# so every push naturally busts visitors' browser caches.
+#
+# Install once after cloning:
+#   PowerShell:  Copy-Item scripts/git-hooks/pre-commit .git/hooks/pre-commit
+#   Bash/Mac:    cp scripts/git-hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+#
+# Then it runs automatically on every `git commit`.
+# ──────────────────────────────────────────────────────────────────
+
+node scripts/cache-bust.js
+if [ $? -ne 0 ]; then
+  echo "cache-bust.js failed — commit aborted."
+  exit 1
+fi
+
+# Re-stage any HTML files the script modified so the new ?v=
+# values land in this same commit.
+git add index.html \
+        team/index.html \
+        research/index.html \
+        publications/index.html \
+        news/index.html \
+        contact/index.html 2>/dev/null
+
+exit 0
